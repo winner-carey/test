@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/static/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+
+
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <form action="{% url "edit_book" book.nid %}" method="post">
+                <h2>修改书籍</h2>
+                <input type="hidden" name="nid" value="{{ book.nid }}">
+                书籍名称：<input type="text" name="name" class="form-control" value="{{ book.name }}">
+                书籍价格：<input type="text" name="price" class="form-control" value="{{ book.price }}">
+                书籍出版日期：<input type="text" name="publish_date" class="form-control"
+                              value="{{ book.publish_date|date:'Y-m-d' }}">
+                出版社：
+                <select name="publish" id="" class="form-control">
+                    {% for publish in publish_id %}
+                        {% if book.publish == publish %}
+                            <option value="{{ publish.nid }}" selected>{{ publish.name }}</option>
+
+                        {% else %}
+                            <option value="{{ publish.nid }}">{{ publish.name }}</option>
+                        {% endif %}
+
+                    {% endfor %}
+                </select>
+
+                作者：
+                <select name="authors" id="" class="form-control" multiple>
+                    {% for author in author_id %}
+                        {% if author in book.authors.all %}
+                            <option selected value="{{ author.nid }}">{{ author.name }}</option>
+                        {% else %}
+                            <option value="{{ author.nid }}">{{ author.name }}</option>
+                        {% endif %}
+
+                    {% endfor %}
+
+                </select>
+
+                <input type="submit" value="修改" class="form-control btn btn-primary">
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

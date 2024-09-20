@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/static/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+
+
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <form action="{% url 'edit_publish' obj.nid %}" method="post">
+                <h2>修改出版社</h2>
+                <input type="hidden" name="nid" value="{{ obj.nid }}">
+                出版社名字：<input type="text" name="name" class="form-control" value="{{ obj.name }}">
+                出版社地址：<input type="text" name="addr" class="form-control" value="{{ obj.addr }}">
+                出版社邮箱：<input type="text" name="email" class="form-control" value="{{ obj.email }}">
+                <input type="submit" value="修改" class="form-control btn btn-primary">
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

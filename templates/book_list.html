@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/static/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <table class="table table-condensed">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>书名</th>
+                    <th>价格</th>
+                    <th>出版日期</th>
+                    <th>出版社</th>
+                    <th>作者</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                {% for book in book_li %}
+
+                    <tr>
+                        <td>{{ book.nid }}</td>
+                        <td>{{ book.name }}</td>
+                        <td>{{ book.price }}</td>
+                        <td>{{ book.publish_date|date:'Y-m-d' }}</td>
+                        <td>{{ book.publish.name }}</td>
+                        {#                        <td>{{ book.authors.all }}</td>#}
+                        <td>{% for author in book.authors.all %}
+                            {{ author.name }}&nbsp;
+                        {% endfor %}
+                        </td>
+
+                        <td><a href="/del_book/{{ book.nid }}.html" class="btn btn-danger">删除</a><a
+                                href="/edit_book/{{ book.nid }}.html" class="btn btn-primary">编辑</a></td>
+                    </tr>
+
+                {% endfor %}
+                </tbody>
+
+
+            </table>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

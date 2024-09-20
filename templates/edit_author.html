@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/static/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+
+
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <form action="{% url 'edit_author' author.nid %}" method="post">
+                <h2>修改作者</h2>
+                <input type="hidden" name="nid" value="{{ author.nid }}">
+                作者名字：<input type="text" name="name" class="form-control" value="{{ author.name }}">
+                作者年龄：<input type="text" name="age" class="form-control" value="{{ author.age }}">
+                <input type="submit" value="修改" class="form-control btn btn-primary">
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
